@@ -5,6 +5,7 @@ cancer_data <- fread("cancer_data.csv")
 lesion_id_analysis <- function(cancer_data) {
 
   avg_lesion_age <- dcast(cancer_data, lesion_id ~ ., mean, value.var=c("age"))
+  
   setnames(avg_lesion_age, ".", "avg_lesion_tage")
   fwrite(avg_lesion_age, "avg_lesion_age.csv")
   
@@ -17,6 +18,7 @@ lesion_id_analysis <- function(cancer_data) {
 gender_analysis <- function(cancer_data) {
 
   avg_sex_age <- dcast(cancer_data, sex ~ ., mean, value.var=c("age"))
+  
   setnames(avg_sex_age, ".", "avg_sex_age")
   fwrite(avg_sex_age, "avg_sex_age.csv")
   
@@ -31,6 +33,7 @@ gender_analysis <- function(cancer_data) {
 localization_analysis <- function(cancer_data) {
 
   avg_area_age <- dcast(cancer_data, localization ~ ., mean, value.var=c("age"))
+  
   setnames(avg_area_age, ".", "avg_area_age")
   fwrite(avg_area_age, "avg_area_age.csv")
   
