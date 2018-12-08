@@ -49,6 +49,7 @@ localization_analysis <- function(cancer_data) {
 
 
 
+
 #Merge average ages for gender and localization on body. 
 merge_variables <- function(avg_sex_age, avg_area_age) {
 
