@@ -10,6 +10,7 @@ lesion_id_analysis <- function(cancer_data) {
   avg_lesion_age <- dcast(cancer_data, lesion_id ~ ., mean, value.var=c("age"))
   
   setnames(avg_lesion_age, ".", "avg_lesion_tage")
+  
   fwrite(avg_lesion_age, "avg_lesion_age.csv")
   
   count1 <- table(avg_lesion_age)
@@ -25,6 +26,7 @@ gender_analysis <- function(cancer_data) {
   avg_sex_age <- dcast(cancer_data, sex ~ ., mean, value.var=c("age"))
   
   setnames(avg_sex_age, ".", "avg_sex_age")
+  
   fwrite(avg_sex_age, "avg_sex_age.csv")
   
   ggplot(data=avg_sex_age, aes(x=sex, y=avg_sex_age, label=avg_sex_age)) + geom_bar(colour="blue", stat="identity") + xlab("Gender") + ylab("Average Ages") + ggtitle("Average Ages per Gender") + labs(caption = "This graph shows the average ages grouped by gender for those in the study testing skin cancer patients.") + geom_text(aes(y = avg_sex_age), size = 3)
@@ -39,7 +41,19 @@ localization_analysis <- function(cancer_data) {
   avg_area_age <- dcast(cancer_data, localization ~ ., mean, value.var=c("age"))
   
   setnames(avg_area_age, ".", "avg_area_age")
+  
   fwrite(avg_area_age, "avg_area_age.csv")
   
   ggplot(data=avg_area_age, aes(x=localization, y=avg_area_age, label=avg_area_age)) + geom_bar(colour="blue", stat="identity") + xlab("Area of the Body") + ylab("Average Ages") + ggtitle("Average Ages by Body Part") + labs(caption = "This graph shows the average ages for those affected by skin cancer based on the area of the body affected by the cancer.") + geom_text(aes(y = avg_area_age), size = 3)
 }
+
+
+
+#Merge average ages for gender and localization on body. 
+merge_variables <- function(avg_sex_age, avg_area_age) {
+
+  merged_data1 <- merge(avg_sex_age, avg_area_age, by="avg_age")
+  
+  fwrite(merged_data1, "merged_age_and_area.csv")
+}
+
