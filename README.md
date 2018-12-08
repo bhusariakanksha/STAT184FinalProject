@@ -22,10 +22,7 @@ gender_analysis <- function(cancer_data) {
   setnames(avg_sex_age, ".", "avg_sex_age")
   fwrite(avg_sex_age, "avg_sex_age.csv")
   
-  ggplot(data=avg_sex_age, aes(x=sex, y=avg_sex_age, label=avg_sex_age)) + 
-+     geom_bar(colour="blue", stat="identity") + 
-+     xlab("Gender") + ylab("Average Ages") +
-+     ggtitle("Average Ages per Gender") + labs(caption = "This graph shows the average ages grouped by gender for those in the study testing skin cancer patients.") + geom_text(aes(y = avg_sex_age), size = 3)
+  ggplot(data=avg_sex_age, aes(x=sex, y=avg_sex_age, label=avg_sex_age)) + geom_bar(colour="blue", stat="identity") + xlab("Gender") + ylab("Average Ages") + ggtitle("Average Ages per Gender") + labs(caption = "This graph shows the average ages grouped by gender for those in the study testing skin cancer patients.") + geom_text(aes(y = avg_sex_age), size = 3)
 }
 
 
@@ -37,8 +34,5 @@ localization_analysis <- function(cancer_data) {
   setnames(avg_area_age, ".", "avg_area_age")
   fwrite(avg_area_age, "avg_area_age.csv")
   
-  ggplot(data=avg_area_age, aes(x=localization, y=avg_area_age, label=avg_area_age)) + 
-+     geom_bar(colour="blue", stat="identity") + 
-+     xlab("Area of the Body") + ylab("Average Ages") +
-+     ggtitle("Average Ages by Body Part") + labs(caption = "This graph shows the average ages for those affected by skin cancer based on the area of the body affected by the cancer.") + geom_text(aes(y = avg_area_age), size = 3)
+  ggplot(data=avg_area_age, aes(x=localization, y=avg_area_age, label=avg_area_age)) + geom_bar(colour="blue", stat="identity") + xlab("Area of the Body") + ylab("Average Ages") + ggtitle("Average Ages by Body Part") + labs(caption = "This graph shows the average ages for those affected by skin cancer based on the area of the body affected by the cancer.") + geom_text(aes(y = avg_area_age), size = 3)
 }
