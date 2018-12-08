@@ -1,6 +1,8 @@
 #Read the Data
 cancer_data <- fread("cancer_data.csv")
 
+
+
 #Create new data table with average ages per lesion_id, write it to a csv file, and make a graph displaying the data 
 lesion_id_analysis <- function(cancer_data) {
 
@@ -14,6 +16,8 @@ lesion_id_analysis <- function(cancer_data) {
 }
 
 
+
+
 #Create new data table with average ages per gender, write it to a csv file, and make a graph displaying the data 
 gender_analysis <- function(cancer_data) {
 
@@ -24,6 +28,8 @@ gender_analysis <- function(cancer_data) {
   
   ggplot(data=avg_sex_age, aes(x=sex, y=avg_sex_age, label=avg_sex_age)) + geom_bar(colour="blue", stat="identity") + xlab("Gender") + ylab("Average Ages") + ggtitle("Average Ages per Gender") + labs(caption = "This graph shows the average ages grouped by gender for those in the study testing skin cancer patients.") + geom_text(aes(y = avg_sex_age), size = 3)
 }
+
+
 
 
 #Create new data table with average ages per body area, write it to a csv file, and make a graph displaying the data 
